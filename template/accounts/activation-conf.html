@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+   
+
+    <!-- Content -->
+    <div id="content">
+        <div class="login-signup-page mx-auto my-5">
+
+ 
+   
+
+
+            {% if success %}
+            <h3 style="text-align: center;display: block;color: #00ae00;">Your account is successfully activated.!!<br><small style="text-align: center;display: block;color: rebeccapurple;padding: 10px 0px 0px 0px;">Thanks for using Businessbook.</small></h3>
+
+            {% else %}
+
+            <h3 style="text-align: center;display: block;color: #00ae00;color:red">Sorry INVALID token!!!.<br><small style="text-align: center;display: block;color: rebeccapurple;padding: 10px 0px 0px 0px;">Thanks for using Profiteebd.</small></h3>
+
+            {% endif %}
+
+
+            <div class="col-11 col-lg-9 col-xl-8 mx-auto">
+                <a class="btn btn-primary btn-block my-4" href="{% url 'login' %}">Go to login</a>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Content -->
+
+{% endblock content %}

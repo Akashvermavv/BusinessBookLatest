@@ -1,0 +1,121 @@
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+<style>
+.campproof .box {
+        padding:.5rem 1rem;
+        font-size:1.5rem;
+        font-weight: 600;
+        color: white;
+        background: darkcyan;
+        border:1px solid darkcyan;
+       
+
+    }
+    .prooftext{
+        padding: .5 rem;
+        font-size:1rem;
+        color:darkcyan;
+    }
+     h3{
+        font-size: 1.5 rem;
+        color: darkcyan;        
+    }
+    
+    .box {
+        padding:2rem 1rem;
+        background: f5f5f5;
+        border:1px solid darkcyan;
+       
+
+    }
+</style>
+
+<script>
+  $(document).ready(function(){
+
+    $("#submit_btn").click(function () {
+
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+
+        selected_option=$('#topic').find(":selected").val();
+
+        if (selected_option==1){
+          fileExtension = ['txt'];
+        }
+        else if (selected_option==2){
+          fileExtension = ['pdf'];
+
+        }
+         if ($.inArray($('#FilUploader').val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+            return false;
+        }
+
+    });
+
+  $('input[name="need_worker_amount"]').change(function() {
+      worker_amount=$("input[name=need_worker_amount]").val()
+      number=$("input[name=earn]").val()
+      res=worker_amount*number+((worker_amount*number)*.04)
+      $("#cost_headline_1").text("Estimated Campaign Cost : "+res+"$");
+      $("#cost_headline_2").text("(Your balance will be charged  "+res+"$  with 4% service charge)");
+  });
+  $('input[name="earn"]').change(function() {
+      worker_amount=$("input[name=need_worker_amount]").val()
+      number=$("input[name=earn]").val()
+      res=worker_amount*number+((worker_amount*number)*.04)
+      $("#cost_headline_1").text("Estimated Campaign Cost : "+res+"$");
+      $("#cost_headline_2").text("(Your balance will be charged  "+res+" $  with 4% service charge)");
+  });
+
+  });
+
+</script>
+
+<div class="row row d-flex justify-content-center">
+  <div class="card" style="width: 80%;">
+    <div class="card-header text-center">
+      <h2>{{campaign.title}}</h2><br>
+
+    </div>
+    <div class="card-body d-flex justify-content-center cont">
+      <div class="col-sm-8 col-md-8">
+           
+          <div class="campdes">
+              <h3> Job Description</h3>
+                  <p class="box">{{campaign.description}} </p>
+          </div>
+          <div class="campdes">
+              <h3>Proof Instructions</h3>
+                  <p class="box">{{campaign.required_proof}} </p>
+          </div>
+          <div><p class="prooftext">
+              Upload
+              <strong>
+               {% if campaign.topic == 1 %}
+                 Text
+              {% elif campaign.topic == 2 %}
+                 PDF 
+              {% else %}
+                 Image
+                {% endif %} </strong>
+                as Proof Here
+                </p>
+          </div>
+           <form  action="{% url 'apply_campaign' campaign.id %}"  method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <input id="FilUploader" type="file" name="myfile" class="form-control"  placeholder="Required Proof"></input>
+          </div>
+          <button id="submit_btn" type="submit" class="w-100 btn btn-primary m-b-0">Submit Job</button>
+        </form>
+          
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

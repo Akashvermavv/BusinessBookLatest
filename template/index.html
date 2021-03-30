@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Book Ltd</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'newsrc/src/img/fav.png' %}" type="image/gif" sizes="16x16">
+
+    <!-- External Style Sheet -->
+    <link rel="stylesheet" href="{% static 'newsrc/src/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'newsrc/src/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'newsrc/src/css/owl.carousel.min.css' %}">
+
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="{% static 'newsrc/src/css/style.css' %}">
+    <style>
+        
+        header .navbar .navbar-brand img {
+    max-width: 20rem;
+}
+    </style>
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div class="preloade">
+        <span></span>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header Start -->
+    <header class="fixed-top">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 d-flex">
+                        <div class="header-social-link">
+                            <ul class="d-flex justify-content-start">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="reg-login ml-auto d-flex">
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}"><button class="btn" type="button">Logout</button></a>
+                            <a href="{% url 'dashboard' %}"><button class="btn" type="button">Dashboard</button></a>
+                            {% else %}
+                            <a href="{% url 'login' %}"><button class="btn" type="button">Login</button></a>
+
+                            <a href="{% url 'signup' %}"><button class="btn" type="button">Register</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Navbar Brand -->
+                <a href="" class="navbar-brand">
+                    <img src="{% static 'newsrc/src/img/blogo.png' %}" alt="Businessbook">
+                </a>
+
+                <!-- Toggler/collapsible Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Main Nav -->
+                <div id="collapsibleNavbar" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'about-us' %}" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="{% url 'safety'%}" class="nav-link">Safety</a></li>
+                        <li class="nav-item"><a href="policy" class="nav-link">policy</a></li>
+                        <li class="nav-item"><a href="{% url 'support' %}" class="nav-link">contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+    </header>
+    <!-- Header End -->
+
+    <!-- Home Section Start -->
+    <section class="home">
+        <div class="row">
+            <div class="owl-carousel home-carousel">
+                <div class="home-carousel-item home-item-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 banner-offset">
+                                <div class="banner-text">
+                                    <strong>Success through People</strong>
+                                    <h1>Welcome to the <span>Businessbook, Have faith in us, get rich with us.</span></h1>
+                                    <p>Service 24/7</p>
+                                    <div class="home-btn">
+                                       <a href="{% url 'signup' %}">
+                                           <button  type="button" class="btn">Register Now</button>
+                                       </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-carousel-item home-item-2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 banner-offset">
+                                <div class="banner-text">
+                                    <strong>Easy Money</strong>
+                                    <h1>Get the benefits from <span>Our investment projects</p>
+                                    <div class="home-btn">
+                                        <a href="{% url 'signup' %}">
+                                        <button  type="button" class="btn">Register Now</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-carousel-item home-item-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 banner-offset">
+                                <div class="banner-text">
+                                    <strong>100% Secured</strong>
+                                    <h1>Earn Money<span> and invest with 100% security</span></h1>
+                                    <p>trusted freelancing marketplace.</p>
+                                    <div class="home-btn">
+                                        <a href="{% url 'signup' %}">
+                                        <button  type="button" class="btn btn-1">Register Now</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="effect">
+                <div class="effect-1">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="effect-2"></div>
+                <div class="effect-3"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Home Section End -->
+
+
+
+    <!-- Why Choose Section Start -->
+    <section class="why-choose section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h2>Why Choose <span> BusinessBook? </span></h2>
+						        <p>Here’s Top 4 reasons why using a Businessbook account for manage your money.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-text">
+
+<h3>Easy to use</h3>
+<p>Business Book Money sending & Transfer Money Bank Transfer Made very Easy & User friendly With Business Book. our money transfering system is very easy. directly to the bank from Business Book is instant and free of cost using .Yes, any Business Book user can make a bank transfer anytime and anywhere in less than a minute.</p></br>
+<h3>Faster Payments</h3>
+<p>very fast Hassle Free Payments receive & Accepted Online & In Stores. Customers can pre-authorize trusted merchants to do a transaction on their behalf on fulfillment of a product/service.Real time updated.</p></br>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-text">
+
+<h3>Highly Secure & Risk-free Investment.</h3>
+<p>Your money is safe with us. We invest your deposits only in trustable & profitable projects. None of your deposits will be converted in to risky assets. Our expert team maintains & monitors all projects . Your account is secured with a special Business Book Pincode to ensure your account is safe.</p></br>
+<h3>Earn money with a business book.</h3>
+<p>There are income opportunities through various types of projects. Make a profit every day by buying ad packs or shares. Best Investment platform in bangladesh. Our platform is Safe & Secure.</br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Section End -->
+
+    <!-- Upcoming Products Section Start -->
+    <section class="upcoming-products section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h2>Our <span>Investment Projects</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/Apps Development.png' %}" alt="Coin">
+                            </div>
+                            <div class="up-product-text">
+                                <p>Apps Development</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/ecommerce.png' %}" alt="E-commerce">
+                            </div>
+                            <div class="up-product-text">
+                                <p>E-commerce</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/Website Flipping.png' %}" alt="Forex Broker">
+                            </div>
+                            <div class="up-product-text">
+                                <p>Website Flipping</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/Crypto currency.webp' %}" alt="Health Gadget">
+                            </div>
+                            <div class="up-product-text">
+                                <p>Crypto currency</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/Video Content.png' %}" alt="BlockChain Edu Center">
+                            </div>
+                            <div class="up-product-text">
+                                <p>Video Content</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="up-product-item">
+                        <div class="up-product-item-inner">
+                            <div class="img-box">
+                                <img src="{% static 'newsrc/src/img/up-products/Cloud Server.png' %}" alt="ATM Machine">
+                            </div>
+                            <div class="up-product-text">
+                                <p>Cloud Server</p>
+                                <!-- New Line -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Upcoming Products Section End -->
+
+    <!-- Client Logo Section Start -->
+    <section class="client-logos section-padding">
+        <div class="container">
+	   <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Our Business Partners</h2>
+                    </div>
+                </div>
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <div class="owl-carousel logo-carousel">
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/clickbank.png' %}" alt="Bitfinex Logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/admob.png' %}" alt="Bitmex Logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/etoro.png' %}" alt="Bitstamp Logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/amazon.png' %}" alt="Bittrex Logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/cj.png' %}" alt="kraken Logo">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-item-inner">
+                                <img src="{% static 'newsrc/src/img/flippa.png' %}" alt="Poloniex Logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Client Logo Section End -->
+    <!-- How We Operate Section Start -->
+    <section class="operate section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="operate-img">
+                        <img src="{% static 'newsrc/src/img/How we do image.png' %}" alt="computer Robot">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row justify-content-start">
+                        <div class="col-lg-8">
+                            <div class="section-title">
+                                <h2><span>How</span> We Do</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="operate-content">
+                                <p class="operate-subtitle">Business Book" is one of the best online business platforms in Bangladesh. And practically all those businesses are managed through "Business Book". All business related support is provided through "Business Book". "Business Book" is an online business community in Bangladesh. Here is a complete guide line on all the businesses that can be conducted through online. And practically all those businesses are managed through "Business Book"
+Here all the activities of "Business Book", and business rules, various types of business training including various types of updates are shared. If you are an entrepreneur or always think of yourself in business thinking then a business book is one of the best platforms to turn your imagination into reality. We have a lot of opportunities in this "Business Book" for those who dream and want to do something on their own, want to see themselves in the group of successful businessmen by working hard and want to change their lives. Those who want to see themselves as a supportive entrepreneur till the end of their lives. We only hope to move forward with them.</p>
+                                <button class="btn btn-1 operate-btn">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How We Operate Section End -->
+
+    <!-- Drives Section Start -->
+    <section class="drive section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h2><span>What Drives</span> Us Ahead</h2>
+                    </div>
+                    <div class="section-subtitle">
+                        <p>We Choose to be authentic in what we do</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="drive-img">
+                        <div class="icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <strong class="color">Transparency</strong>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="drive-img">
+                        <div class="icon">
+                            <i class="fas fa-lock color"></i>
+                        </div>
+                        <strong>Security</strong>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="drive-img">
+                        <div class="icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <strong class="color">Security</strong>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="drive-img">
+                        <div class="icon">
+                            <i class="fas fa-hand-holding-water color"></i>
+                        </div>
+                        <strong>Security</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Drives Section End -->
+
+    <!-- What do we Stand for Section Start -->
+    <section class="profit section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="profit-img">
+                        <img src="{% static 'newsrc/src/img/profit.jpg' %}" alt="Profit">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2><span>Profits </span> at its best</h2>
+                    </div>
+                    <p>Assistive request matching algorithms are supported by one of a kind trade engine. Interchangeability of Orderbook permits to execute hefty orders and apply market making trading, frequent trading and scalping methodologies. Agreeing
+                        with security norms, we ensure security of your assets and information. A trading procedure can be compared to a trading plan that considers different components and exigencies for an investor. It comprises of three phases: designing,
+                        putting trades, and performing trades. At each phase of the procedure, calculations relating to the methodology are calculated and changed dependent on the advancements in the market. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- What do we Stand for Section End -->
+
+    <!-- Stand for Section Start -->
+    <section class="stand-for section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2 data-heading="Join The Leading Team"><span>What do We </span> Stand for?</h2>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec purus et metus convallis lacinia. Aenean sit amet ornare turpis. Sed pharetra vitae est quis ultrices. Etiam quis elit rhoncus, condimentum lectus at, porta nisl.
+                    </p>
+
+                    <div class="owl-carousel stand-carousel">
+                        <div class="stand-carousel-item">
+                            <div class="stand-carousel-item-inner text-center">
+                                <div class="icon">
+                                    <img src="{% static 'newsrc/src/img/Stand/build-icon.png' %}" alt="build-icon">
+                                </div>
+                                <strong>Team Build Up</strong>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi cum magnam aliquid nam laborum quae quam non ab distinctio. Magnam.</p>
+                            </div>
+                        </div>
+                        <div class="stand-carousel-item">
+                            <div class="stand-carousel-item-inner text-center">
+                                <div class="icon">
+                                    <img src="{% static 'newsrc/src/img/Stand/strategy-icon.png' %}" alt="Strategy-icon">
+                                </div>
+                                <strong>Strategy</strong>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi cum magnam aliquid nam laborum quae quam non ab distinctio. Magnam.</p>
+                            </div>
+                        </div>
+                        <div class="stand-carousel-item">
+                            <div class="stand-carousel-item-inner text-center">
+                                <div class="icon">
+                                    <img src="{% static 'newsrc/src/img/Stand/communication-icon.png' %}" alt="Communication-icon">
+
+
+
+                                </div>
+                                <strong>Communication</strong>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi cum magnam aliquid nam laborum quae quam non ab distinctio. Magnam.</p>
+                            </div>
+                        </div>
+                        <div class="stand-carousel-item">
+                            <div class="stand-carousel-item-inner text-center">
+                                <div class="icon">
+                                    <img src="{% static 'newsrc/src/img/Stand/cohesion-icon.png' %}" alt="Cohesion-icon">
+                                </div>
+                                <strong>Team Cohesion</strong>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi cum magnam aliquid nam laborum quae quam non ab distinctio. Magnam.</p>
+                            </div>
+                        </div>
+                        <div class="stand-carousel-item">
+                            <div class="stand-carousel-item-inner text-center">
+                                <div class="icon">
+                                    <img src="{% static 'newsrc/src/img/Stand/leadership-icon.png' %}" alt="leadership-icon">
+                                </div>
+                                <strong>Team Leadership</strong>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi cum magnam aliquid nam laborum quae quam non ab distinctio. Magnam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="stand-img">
+                        <img src="{% static 'newsrc/src/img/What Do We Stand For.png' %}" alt="Team Hand">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stand for Section End -->
+
+    <!-- Sponsor Section Start -->
+    <section class="sponsor section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="owl-carousel sponsor-carousel">
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/bkash.jpg' %}" alt="Sponsor">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/nagad.jpg' %}" alt="Sponsor">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/mastercard.jpg' %}" alt="Sponsor">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/payoneer.jpg' %}" alt="Sponsor">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/payeer.jpg' %}" alt="Sponsor">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/skrill.jpg' %}" alt="Sponsor">
+                    </div>
+					<div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/webmoney.jpg' %}" alt="Sponsor">
+                    </div>
+					<div class="sponsor-item">
+                        <img src="{% static 'newsrc/src/img/Sponsor/perfectmoney.jpg' %}" alt="Sponsor">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sponsor Section End -->
+
+    <!-- Contact Section Start -->
+    <section class="contact section-padding" data-scroll-index="6">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h2>Get in <span>touch</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="contact-info">
+                        <h3>For Any queries and support</h3>
+                        <div class="contact-info-item">
+                            <i class="fas fa-location-arrow"></i>
+                            <h4>Company Location</h4>
+                            <p>Ecb Chottor Bus Stand Wasi Tower 1216 Mirpur, Dhaka Division, Bangladesh </p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <h4>write to us at</h4>
+                            <p>support@businessbook.ltd</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <h4>Call us on</h4>
+                            <p>+88 09638-080420 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Your Name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Your Email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="tel" placeholder="Your Phone" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Subject" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea placeholder="Your Message" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button type="submit" class="btn btn-1">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="footer section-padding">
+        <!-- <div class="footer-shape"></div> -->
+        <div class="tree tree1">
+            <img src="{% static 'newsrc/src/img/tree1.png' %}" alt="Tree">
+        </div>
+        <div class="tree tree2">
+            <img src="{% static 'newsrc/src/img/tree2.png' %}" alt="Tree">
+        </div>
+        <div class="coin">
+            <img src="{% static 'newsrc/src/img/coin1.png' %}" alt="Coin">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="title">
+                        <a href="index.html"> BusinessBook</a>
+                    </h5>
+                    <div class="content">
+                        <p>Platform to online Business Development</p>
+                    </div>
+                    <ul class="social-icons d-flex justify-content-start">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="title">Company</h5>
+                    <ul class="links">
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Suppoet Center</a></li>
+                        <li><a href="#">Terms & Policy</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="title">Useful Links</h5>
+                    <ul class="links">
+                        <li><a href="#">Payment Method</a></li>
+                        <li><a href="#">Pricing Plan</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Testimonial</a></li>
+                        <li><a href="#">Investment</a></li>
+                        <li><a href="#">Investor</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="title">Contact Information</h5>
+                    <ul class="links">
+                        <li>Ecb Chottor Bus Stand Wasi Tower 1216 Mirpur, Dhaka Division, Bangladesh</li>
+                        <li><a href="tel:+88 09638-080420">Call Us Now +88 09638-080420</a></li>
+                        <li><a href="mailto:support@businessbook.ltd">support@businessbook.ltd</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright-text text-center">Copyright <a href="index.html"> BusinessBook </a> &copy; 2021; All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- External JavaScript File -->
+    <script src="{% static 'newsrc/src/js/jquery.min.js' %}"></script>
+    <script src="{% static 'newsrc/src/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'newsrc/src/js/popper.min.js' %}"></script>
+    <script src="{% static 'newsrc/src/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'newsrc/src/js/jquery.countdown.min.js' %}"></script>
+
+    <!-- Main JavaScript File -->
+    <script src="{% static 'newsrc/src/js/script.js' %}"></script>
+</body>
+
+</html>

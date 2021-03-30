@@ -1,0 +1,56 @@
+﻿
+
+
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+
+
+
+<div class="row row d-flex justify-content-center">
+    <div class="card" style="width: 80%;">
+        <div class="card-header text-center">
+            <h2>Add Fund</h2>
+        </div>
+        <div class="card-body d-flex justify-content-center">
+            <div class="col-sm-12" style="max-width: max-content;">
+                <select name="select" class="form-control form-control-success">
+                    <option value="opt1">USD</option>
+                    
+                </select><br>
+                
+                    
+            <!--<form action="https://perfectmoney.com/api/step1.asp" method="POST">-->
+                <form action="https://www.smanager.xyz/@Businessbook" method="GET">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon2">$</span>
+                <input type="text" class="form-control" name="PAYMENT_AMOUNT" placeholder="Amount">
+                 </div>
+
+                <input type="hidden" name="PAYEE_ACCOUNT" value="U24170548">
+                <input type="hidden" name="PAYEE_NAME" value="Profiteebd">
+                <input type="hidden" name="PAYMENT_ID" value="{{user_id}}">
+                
+                <input type="hidden" name="PAYMENT_UNITS" value="USD">
+                <input type="hidden" name="STATUS_URL" value="http://127.0.0.1:8000/dashboard/payment_status/">
+                <input type="hidden" name="PAYMENT_URL" value="http://127.0.0.1:8000/dashboard/payment_success/">
+                <input type="hidden" name="PAYMENT_URL_METHOD" value="POST">
+                <input type="hidden" name="NOPAYMENT_URL" value="http://127.0.0.1:8000/dashboard/payment_failed/">
+                
+                <input type="hidden" name="NOPAYMENT_URL_METHOD" value="POST">
+                <input type="hidden" name="PAYMENT_URL_METHOD" value="POST">
+                <input type="hidden" name="ORDER_NUM" value="{{order_number}}">
+                <input type="hidden" name="CUST_NUM" value="{{user_id}}">
+                <input type="hidden" name="SUGGESTED_MEMO" value="">
+                <input type="hidden" name="BAGGAGE_FIELDS" value="">
+                <button type="submit" class="btn btn-primary m-b-0">Add fund</button>
+               
+            </form>
+
+                               
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,8 @@
+.validationmessage{
+	color:red;
+	list-style-type: none;
+	text-decoration: none;
+	font-style:bold;
+}
+
+.validationmessage ul{list-style-type: none}

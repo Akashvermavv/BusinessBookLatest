@@ -1,0 +1,107 @@
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+{% csrf_token %}
+
+<script>
+  $(document).ready(function(){
+
+    // $("#submit_btn").click(function () {
+
+    //     var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+
+    //     selected_option=$('#topic').find(":selected").val();
+
+    //     if (selected_option==1){
+    //       fileExtension = ['txt'];
+    //     }
+    //     else if (selected_option==2){
+    //       fileExtension = ['pdf'];
+
+    //     }
+    //      if ($.inArray($('#FilUploader').val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+    //         alert("Only formats are allowed : "+fileExtension.join(', '));
+    //         return false;
+    //     }
+
+    // });
+
+  $('input[name="need_worker_amount"]').change(function() {
+      worker_amount=$("input[name=need_worker_amount]").val()
+      number=$("input[name=earn]").val()
+      res=worker_amount*number+((worker_amount*number)*.04)
+      $("#cost_headline_1").text("Estimated Campaign Cost : "+res+"$");
+      $("#cost_headline_2").text("(Your balance will be charged  "+res+"$  with 4% service charge)");
+  });
+  $('input[name="earn"]').change(function() {
+      worker_amount=$("input[name=need_worker_amount]").val()
+      number=$("input[name=earn]").val()
+      res=worker_amount*number+((worker_amount*number)*.04)
+      $("#cost_headline_1").text("Estimated Campaign Cost : "+res+"$");
+      $("#cost_headline_2").text("(Your balance will be charged  "+res+" $  with 4% service charge)");
+  });
+
+  });
+
+</script>
+
+<div class="row row d-flex justify-content-center">
+  <div class="card" style="width: 80%;">
+    <div class="card-header text-center">
+      <h2>Create Campaign</h2><br>
+      <h5 id="cost_headline_1">Estimated Campaign Cost : 0$ </h5>
+
+      <h6 id="cost_headline_2"> (Your balance will be charged  0$  with 4% service charge) </h6>
+    </div>
+    <div class="card-body d-flex justify-content-center cont">
+      <div class="col-sm-8 col-md-8">
+        <form   action="" method="post" enctype="multipart/form-data">
+        <select id="category" name="category" class="form-control form-control-success">
+        <option disabled selected value> -- select an option -- </option>
+          {% for each_category in category %}
+          <option value="{{ each_category.id }}">{{ each_category.title }}</option>
+          {% endfor %}
+        </select><br>
+        <select id='topic' name="topic" aria-placeholder="Topic" class="form-control form-control-success">
+          <option value="1">Text</option>
+          <option value="2">PDF</option>
+          <option value="3">Image</option>
+        </select><br>
+
+
+          <div class="row">
+            <div class="form-group col-md-6">
+              <input type="number"  value="0" name="need_worker_amount" class="form-control" placeholder="How many worker needed">
+            </div>
+
+          <div class="input-group col-md-6">
+            <span class="input-group-addon" id="basic-addon2">$</span>
+            <input type="number" step="any" value="0" class="form-control" name="earn" placeholder="Worker will earn">
+          </div>
+         
+        </div>
+          <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Campaign Title">
+          </div>
+          <div class="form-group">
+            <textarea type="text" name="description" class="form-control" placeholder="Campaign Description"></textarea>
+          </div>
+          <div class="form-group">
+            <textarea type="text" class="form-control" name="required_proof" placeholder="Give instructions about the proof you need"></textarea>
+          </div>
+          <div class="form-group">
+            <!--<input id="FilUploader" type="file" name="myfile" class="form-control"  placeholder="Required Proof"></input>-->
+             {{form.cam_image}}
+          </div>
+          <button id="submit_btn" type="submit" class="w-100 btn btn-primary m-b-0">Create New Campaign</button>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

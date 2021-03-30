@@ -1,0 +1,36 @@
+accounts/migrations/*
+!accounts/migrations/__init__.py
+dashboard/migrations/*
+!dashboard/migrations/__init__.py
+media/
+*.pyc
+*.log
+.DS_Store
+.project
+.pydevproject
+.settings
+
+.idea/
+.vscode/
+migrations/
+__pycache__/
+node_modules/
+*.egg-info/
+# dist/
+venv/
+*env/
+
+Installer_Logs_*
+
+npm-debug.log
+yarn-error.log
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Django stuff:
+*.log
+

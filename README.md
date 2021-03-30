@@ -1,0 +1,2 @@
+# businessbookproject
+Businessbook is an online project share selling company .Users signup and add money to their account and buy share or adpack .These adpacks will expire after 60 days and give them 20% return on their investment . Users money will be used to build online startups and assets .</br></br>Core features :</br> Agent and general user registration . </br> Affiliate program where agents and users will be paid if a user signup with their link and buy adpack. </br>Deposit money with perfectmoney and withdraw funds to local payment methods or via bank or pm .

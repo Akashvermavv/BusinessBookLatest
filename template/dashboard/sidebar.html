@@ -1,0 +1,554 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    <meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'dashboard-static/assets/images/favicon.ico' %}" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard-static/bower_components/bootstrap/css/bootstrap.min.css' %}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard-static/assets/icon/feather/css/feather.css' %}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard-static/assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard-static/assets/css/custom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard-static/assets/css/jquery.mCustomScrollbar.css' %}">
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/jquery/js/jquery.min.js' %}"></script>
+</head>
+<!-- Menu sidebar static layout -->
+
+<body style="margin-top:0px">
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+                <div class="ring">
+                    <div class="frame"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+
+                    <div class="navbar-logo">
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                            <i class="feather icon-menu"></i>
+                        </a>
+                        <a href="{% url 'dashboard' %}">
+                            <img class="img-fluid" style="margin-top:3px" height="60px" width="170px" src="{% static 'img/login_page_logo.png' %}" alt="Theme-Logo">
+                        </a>
+                        <a class="mobile-options">
+                            <i class="feather icon-more-horizontal"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li>
+                                <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <i class="feather icon-maximize full-screen"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav-right">
+                            <li class="user-profile header-notification">
+                                <div class="dropdown-primary dropdown">
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        {% if request.user.profile_picture.url != ''%}
+                                        <img src="{{request.user.profile_picture.url}}" class="img-radius" alt="User-Profile-Image">
+                                        {% endif %}
+                                        <span>{{request.user.first_name}}</span>
+                                        <i class="feather icon-chevron-down"></i>
+                                    </div>
+                                    <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                        <!--
+                                        <li>
+                                            <a href="#!">
+                                                <i class="feather icon-settings"></i> Settings
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="feather icon-user"></i> Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="feather icon-mail"></i> My Messages
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="feather icon-lock"></i> Lock Screen
+                                            </a>
+                                        </li>
+                                        <li>
+                                        -->
+                                            <a href="{% url 'logout' %}">
+                                                <i class="feather icon-log-out"></i> Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                        </ul> 
+
+
+                    </div>
+                </div>
+            </nav>
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="pcoded-inner-navbar main-menu">
+                            <div class="pcoded-navigatio-lavel">Navigation</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                    <a href="{% url 'dashboard' %}">
+<!--                                        javascript:void(0)-->
+                                        <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                       
+                                       <!-- <li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Adpack</span>
+                                                <span class="pcoded-badge label label-info ">NEW</span>
+                                            </a>
+                                        </li> -->
+                                      
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
+                                        <span class="pcoded-mtext">User Profile</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{% if exist %}{% url 'personal_info_update' request.user.id %} {% else %}{% url 'add_premium_plan' %} {% endif %}">
+                                                <span class="pcoded-mtext">Personal Information</span>
+                                            </a>
+                                        </li>
+                                        <!--<li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Verification</span>
+                                            </a>
+                                        </li> -->
+                                        <li class="">
+                                            <a href="{% url 'payment_info' %}">
+                                                <span class="pcoded-mtext">Payment Information</span>
+                                            </a>
+                                        </li>
+                                      <!--  <li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">User Card</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                        <span class="pcoded-mtext">Money</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{% url 'add_fund' %}">
+                                                <span class="pcoded-mtext">Add fund</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{% url 'send_money' %} ">
+                                                <span class="pcoded-mtext">Blance Transfer</span>
+                                            </a>
+                                        </li>
+                                      <!--  <li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Make Payment</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Payment Invoice</span>
+                                            </a>
+                                        </li>-->
+                                        <li class="">
+                                            <a href="{% url 'withdraw' %}">
+                                                <span class="pcoded-mtext">Withdraw</span>
+                                            </a>
+                                        </li>
+
+                                          
+                                        <!--<li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">E-Voucher</span>
+                                            </a>
+                                        </li> -->
+                                        <!--<li class="">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Gift Card</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                </li>
+
+                                  <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                        <span class="pcoded-mtext">Subscription</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{% url 'add_premium_plan' %}">
+                                                <span class="pcoded-mtext">Premium Plan</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- transection history menu starts here -->
+
+
+                                <li class="pcoded-hasmenu " dropdown-icon="style1" subitem-icon="style1">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                                        <span class="pcoded-mtext">Transaction History</span>
+                                    </a>
+
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="{% url 'deposits_history' %} ">
+                                                <span class="pcoded-mtext">Deposit history</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{% url 'withdraw_history' %}">
+                                                <span class="pcoded-mtext">Withdraw history</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{% url 'sendmoney_history' %} ">
+                                                <span class="pcoded-mtext">Send money history</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="{% url 'receivedmoney_history' %} ">
+                                                <span class="pcoded-mtext">Recieved money history</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                            {% if request.user.agent_id > 0 %}
+                            <div class="pcoded-navigatio-lavel">Affiliate Sector</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-box"></i></span>
+                                        <span class="pcoded-mtext">Affiliate </span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'refer' %}">
+                                                <span class="pcoded-mtext">Referal link</span>
+                                            </a>
+                                        </li>
+                                        
+                                        <li class=" ">
+                                            <a href="{% url 'refer_list' %}">
+                                                <span class="pcoded-mtext">Referal List</span>
+                                            </a>
+                                        </li>
+                                        <!--
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Refer Earn</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                            {% endif %}
+
+                             <div class="pcoded-navigatio-lavel">Job</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                    <span class="pcoded-mtext">Job</span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li class=" ">
+                                        <a href="{% url 'add_campaign' %}">
+                                            <span class="pcoded-mtext">Add Campaign</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{% url 'get_your_campaign' %}">
+                                            <span class="pcoded-mtext">Your Campaign</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{% url 'get_your_campaign_list' %}">
+                                            <span class="pcoded-mtext">Campaign List</span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a href="{% url 'get_job_list' %}">
+                                            <span class="pcoded-mtext">Job List</span>
+                                        </a>
+                                    </li>
+
+                                    <li class=" ">
+                                        <a href="{% if exist %}{% url 'get_finished_job_list' %}{% else %}{% url 'add_premium_plan' %} {% endif %}">
+                                            <span class="pcoded-mtext">Applied Job List</span>
+                                        </a>
+                                    </li>
+<!--                                    <li class=" ">-->
+<!--                                        <a href="{% url 'get_your_campaign_list' %}">-->
+<!--                                            <span class="pcoded-mtext">Your Campaign List</span>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+                                </ul>
+                        </ul>
+
+                            <div class="pcoded-navigatio-lavel">Profit Sector</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-briefcase"></i></span>
+                                        <span class="pcoded-mtext">Rev. Share</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'adpack_list' %} ">
+                                                <span class="pcoded-mtext">Buy Adpack</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'adpack_history' %}  ">
+                                                <span class="pcoded-mtext">Adpack History</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'revenue_history' %}">
+                                                <span class="pcoded-mtext">Revenue History</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-list"></i></span>
+                                        <span class="pcoded-mtext">Project Share</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Buy Share</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Profite Collect</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Share List</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="pcoded-navigatio-lavel">Business Sector</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span>
+                                        <span class="pcoded-mtext">Marketplace</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Virtual Product</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Physical Product</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Your Product</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">History</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-unlock"></i></span>
+                                        <span class="pcoded-mtext">Security</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'change_password' %}">
+                                                <span class="pcoded-mtext">Change password</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Security Question</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Pin Code</span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="#">
+                                                <span class="pcoded-mtext">Login History</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="none" subitem-border="true">
+                                    <li class="">
+                                        <a href="{% url 'logout' %}">
+                                            <span class="pcoded-micon"><i class="feather icon-log-out"></i></span>
+                                            <span class="pcoded-mtext">Log Out</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+                            <div class="main-body">
+                                
+                                <!--- main content -->
+                                
+                                {% block content %}
+
+                                {% endblock %}
+                                
+                                
+                                <!-- main content end -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/jquery-ui/js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/popper.js/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/jquery-slimscroll/js/jquery.slimscroll.js' %}"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/modernizr/js/modernizr.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard-static/bower_components/js/css-scrollbars.js' %}"></script>
+    <!-- Custom js -->
+    <script src="{% static 'dashboard-static/assets/js/pcoded.min.js' %}"></script>
+    <script src="{% static 'dashboard-static/assets/js/vartical-layout.min.js' %}"></script>
+    <script src="{% static 'dashboard-static/assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard-static/assets/pages/dashboard/crm-dashboard.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard-static/assets/js/script.js' %}"></script>
+
+
+
+
+    <!-- facebook messanger code here -->
+
+    <!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v8.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="100679864938220"
+  theme_color="#ffc300"
+  logged_in_greeting="বিজনেস বুক এ আপনাকে স্বাগতম, কিভাবে আমরা আপনাকে সহযোগিতা করতে পারি ? "
+  logged_out_greeting="বিজনেস বুক এ আপনাকে স্বাগতম, কিভাবে আমরা আপনাকে সহযোগিতা করতে পারি ? ">
+      </div>
+    <!-- end of facebook messanger code here -->
+</body>
+
+</html>

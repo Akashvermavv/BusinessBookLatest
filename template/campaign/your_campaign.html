@@ -1,0 +1,39 @@
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+{% csrf_token %}
+
+
+
+<div class="row row d-flex justify-content-center">
+  <div class="card" style="width: 80%;">
+    <div class="card-header text-center">
+      <h2>Your Campaign</h2>
+    </div>
+    <div class="card-body d-flex justify-content-center cont">
+      <div class="col-sm-8 col-md-8">
+
+
+        {% for each_campaign in campaign %}
+        <div class="card" style="background-color:gainsboro">
+          <div class="card-body">
+            {{ each_campaign.title }}
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+        <a href="{% url 'add_campaign' %}">
+          <div class="card" style="background-color:indigo">
+            <div class="card-body text-white text-center">
+              Create Campaign
+            </div>
+          </div>
+        </a>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+    <!-- Content -->
+    <style>
+    </style>
+
+    <div id="content">
+        <div class="login-signup-page mx-auto my-5">
+            <!--<div class="nrt">
+                <p id="sln" class="nahidr" onclick="myFunction()">Personal</p>
+                <p id="sln2" onclick="myFunction2()">Business</p>
+            </div> -->
+
+            <!--- Personal Account ---->
+            
+            <div id="nahid">
+                <h3 class="font-weight-400 text-center">Sign Up <small></small></h3>
+                <p class="lead text-center">Your Sign Up information is safe with us.</p>
+
+               
+                
+                 
+                
+                    
+                <div class="bg-light shadow-md rounded p-4 mx-2">
+                    {% if referinvalid %}
+                    <div class="alert alert-danger">{{referinvalid}}</div>
+
+                    {% endif %}
+                    
+                    <form id="signupForm" method="post" action="">
+
+                        <input type="hidden" name="referer_id" value="0">
+                        <input type="hidden" name="agent_id" value="0">
+                         {% csrf_token %}
+                      
+                        <div class="form-group">
+                           {{ form.first_name }}
+                         <div class="validationmessage">  {{form.first_name.errors}} </div>
+                        </div>
+                        <div class="form-group">
+                            {{form.last_name}}
+                           <div class="validationmessage"> {{form.last_name.errors}} </div>
+                        </div>
+                        <div class="form-group">
+                            {{form.email}}
+                            <div class="validationmessage">{{form.email.errors}} </div>
+                            {% if userexist %}
+                            <div class="validationmessage"> User already exists with this email </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+
+                            
+                            {{form.mobile}}
+                           <div class="validationmessage"> {{form.mobile.errors}}  </div>
+
+                        </div>
+                        <div class="form-group">
+                            {{form.address}}
+                           <div class="validationmessage"> {{form.address.errors}}</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            
+                            {{form.country}}
+                            <div class="validationmessage">{{form.country.errors}}</div>
+                        </div>
+                        <div class="form-group">
+                           {{form.password}}
+                           {% if messages %}
+                           {% for message in messages %}
+                           {% if message.levels == DEFAULT_MESSAGE_LEVEL.ERROR %}
+                           <div class="validationmessage">{{message}}</div>
+                           {% endif %}
+                           {% endfor %}
+                           {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{form.confirm_password}}
+                            <div class="validationmessage">{{form.confirm_password.errors}}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LdVsPEUAAAAAEH7x7ev1c_bbmPv8OUqCxcCjjVH"></div>
+                            {% if captcha %}
+
+                            <div class="validationmessage">Captcha error</div>
+
+
+                            {% endif %}
+
+                        </div>
+                        <button class="btn btn-primary btn-block my-4" type="submit">Sign Up</button>
+                    </form>
+                    <p class="text-3 text-muted text-center mb-0">Already have an account? <a class="btn-link" href="{% url 'login' %}">Log In</a></p>
+                </div>
+            </div> 
+            <!--- Personal Account ---->
+
+
+
+
+            <!--- Business Account ---->
+
+    
+            
+            <div id="tania" style="display:none">
+                <h3 class="font-weight-400 text-center">Sign Up <small>(Business)</small></h3>
+                <p class="lead text-center">Your Sign Up information is safe with us.</p>
+
+            
+                
+                 
+                
+                    
+                <div class="bg-light shadow-md rounded p-4 mx-2">
+                    
+                    <form id="signupForm" method="post" action="">
+
+                        
+                        <input type="hidden" name="referer_id" value="{{referer}}">
+
+                        {% csrf_token %}
+                        
+
+                         <div class="form-group">
+                           {{ form.company }}
+                         <div class="validationmessage">  {{form.company.errors}} </div>
+                        </div>
+
+                        <div class="form-group">
+                           {{ form.first_name }}
+                         <div class="validationmessage">  {{form.first_name.errors}} </div>
+                        </div>
+                        <div class="form-group">
+                            {{form.last_name}}
+                           <div class="validationmessage"> {{form.last_name.errors}} </div>
+                        </div>
+                        <div class="form-group">
+                            {{form.email}}
+                            <div class="validationmessage">{{form.email.errors}} </div>
+                            {% if userexist %}
+                            <div class="validationmessage"> User already exists with this email </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+
+                            
+                            {{form.mobile}}
+                           <div class="validationmessage"> {{form.mobile.errors}}  </div>
+
+                        </div>
+                        <div class="form-group">
+                            {{form.address}}
+                           <div class="validationmessage"> {{form.address.errors}}</div>
+                        </div>
+
+
+                        <div class="form-group">
+                            
+                            {{form.country}}
+                            <div class="validationmessage">{{form.country.errors}}</div>
+                        </div>
+                        <div class="form-group">
+                           {{form.password}}
+                           {% if messages %}
+                           {% for message in messages %}
+                           {% if message.levels == DEFAULT_MESSAGE_LEVEL.ERROR %}
+                           <div class="validationmessage">{{message}}</div>
+                           {% endif %}
+                           {% endfor %}
+                           {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{form.confirm_password}}
+                            <div class="validationmessage">{{form.confirm_password.errors}}</div>
+                        </div>
+                        <div class="form-control">
+                            <input type="number" id="agent_number" name="agent_id" class="form-control" placeholder="enter your agent id">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LdVsPEUAAAAAEH7x7ev1c_bbmPv8OUqCxcCjjVH"></div>
+                            {% if captcha %}
+
+                            <div class="validationmessage">Captcha error</div>
+
+
+                            {% endif %}
+
+                        </div>
+                        <button class="btn btn-primary btn-block my-4" id="business_submit" type="submit">Sign Up</button>
+                    </form>
+                    <p class="text-3 text-muted text-center mb-0">Already have an account? <a class="btn-link" href="{% url 'login' %}">Log In</a></p>
+                </div>
+            </div> 
+
+
+
+
+
+
+
+
+
+
+            <!--
+            <div id="tania" style="display: none">
+                <h3 class="font-weight-400 text-center">Sign Up <small>(Business)</small></h3>
+                <p class="lead text-center">Your Sign Up information is safe with us.</p>
+                <div class="bg-light shadow-md rounded p-4 mx-2">
+                    <form id="signupForm" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="company" required="" placeholder="Company Name">
+                        </div><div class="form-group">
+                            <input type="text" class="form-control" id="firstName" required="" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="lastName" required="" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="emailAddress" required="" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="phone" class="form-control" id="mobile" required="" placeholder="Mobile">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address" required="" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="country" required="" placeholder="Country">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" required="" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="confpassword" required="" placeholder="Confirm Password">
+                        </div>
+                        <button class="btn btn-primary btn-block my-4" type="submit">Sign Up</button>
+                    </form>
+                    <p class="text-3 text-muted text-center mb-0">Already have an account? <a class="btn-link" href="login.html">Log In</a></p>
+                </div>
+            </div>
+        </div>--> 
+        <!--- Business Account ---->
+
+    </div>
+    <!-- Content end -->
+
+    
+
+{% endblock content %}

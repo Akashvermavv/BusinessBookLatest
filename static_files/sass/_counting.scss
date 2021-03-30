@@ -1,0 +1,52 @@
+/* Number counting Css */
+
+.counting {
+    background: url(../img/happy.jpg);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(178, 36, 239, 0.7);
+        z-index: -1;
+    }
+    .counting-item {
+        // background-color: red;
+        margin: 2rem 0;
+        .counting-inner {
+            padding: 3rem;
+            .icon {
+                width: 8rem;
+                height: 8rem;
+                border-radius: 50%;
+                border: .2rem solid #ffffff;
+                text-align: center;
+                margin: 2rem auto;
+                i {
+                    font-size: 4rem;
+                    line-height: 8rem;
+                    color: #ffffff;
+                }
+            }
+            h4.number {
+                font-size: 4rem;
+                font-weight: 500;
+                color: var(--color-0);
+            }
+            p {
+                @extend %paragraph;
+                color: var(--color-0);
+            }
+        }
+    }
+}

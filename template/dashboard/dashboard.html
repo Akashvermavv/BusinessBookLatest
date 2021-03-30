@@ -1,0 +1,224 @@
+                    {% extends 'dashboard/sidebar.html' %}
+
+                    {% block content %}
+                    {% load static %}
+
+<center>
+<div class="messagebox" id="mydiv" style="width: 50%;background-color:#404e67;color:#0ac44b;">
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}</div>
+    </center>
+                    <script>
+                        setTimeout(function() {
+    $('#mydiv').fadeOut('fast');
+}, 3000); // <-- time in milliseconds
+                    </script>
+
+                    <div class="page-wrapper" style="margin-top:0px">
+                                <div class="row">
+                                    <!--slider image will start from here -->
+                                      <div class="col-xl-12 col-md-12">
+                                                <div class="card  text-white">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <!--slider img code -->
+
+                                    <div class="dash-body" style="margin-left:10%">
+                                        <div class="dash-slide" style="margin:0px">
+                                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade"
+                                                data-ride="carousel">
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                                        class="active"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                                      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                                     
+                                                </ol>
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/1.png' %}" class="d-block w-100">
+                                                        </div>
+                                                        <div class="carousel-caption">
+                                                           
+                                                            <p
+                                                                class="animate__animated animate__bounce animate__delay-3s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-item" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/6.png' %}" class="d-block w-100">
+                                                    </div>
+                                                        <div class="carousel-caption">
+                                                        
+                                                            <p
+                                                                class="animate__animated animate__bounce animate__delay-3s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-item" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/2.png' %}" class="d-block w-100">
+                                                    </div>
+                                                        <div class="carousel-caption">
+                                                          
+                                                            <p
+                                                                class="animate__animated animate__fadeInLeft animate__delay-3s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="carousel-item" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/3.png' %}" class="d-block w-100">
+                                                    </div>
+                                                        <div class="carousel-caption">
+                                                           
+                                                            <p
+                                                                class="animate__animated animate__fadeInLeft animate__delay-2s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                     <div class="carousel-item" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/4.png' %}" class="d-block w-100">
+                                                    </div>
+                                                        <div class="carousel-caption">
+                                                          
+                                                            <p
+                                                                class="animate__animated animate__fadeInLeft animate__delay-3s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                     <div class="carousel-item" data-interval="3500">
+                                                        <div id="pics">
+                                                        <img src="{% static 'dashboard-static/assets/images/5.png' %}" class="d-block w-100">
+                                                    </div>
+                                                        <div class="carousel-caption">
+                                                          
+                                                            <p
+                                                                class="animate__animated animate__fadeInLeft animate__delay-3s">
+                                                                <a href="{% url 'upcomming' %}">CHECK NOW</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators"
+                                                    role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators"
+                                                    role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                                                <!--slider img code end here -->
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    <!-- slider image will be ended here -->
+
+
+                                        
+
+
+
+
+
+
+
+                                            <!-- statustic-card start -->
+                                           
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-green text-white">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <p class="m-b-5">Balance</p>
+                                                                <h4 class="m-b-0">{{balance}}  <span>$</span></h4>
+                                                            </div>
+                                                            <div class="col col-auto text-right">
+                                                                <i class="feather icon-credit-card f-50 text-c-green"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                             <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-yellow text-white">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <p class="m-b-5">Active adpack</p>
+                                                                <h4 class="m-b-0"> {{ active_adpacks }} </h4>
+                                                            </div>
+                                                            <div class="col col-auto text-right">
+                                                                <i class="feather icon-user f-50 text-c-yellow"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            {% if request.user.agent_id > 0 %}
+
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-pink text-white">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <p class="m-b-5">Total referal</p>
+                                                                <h4 class="m-b-0">{{total_referal}}</h4>
+                                                            </div>
+                                                            <div class="col col-auto text-right">
+                                                                <i class="feather icon-book f-50 text-c-pink"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+                                            <div class="col-xl-3 col-md-6">
+                                                <div class="card bg-c-blue text-white">
+                                                    <div class="card-block">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <p class="m-b-5">Total withdraw</p>
+                                                                <h4 class="m-b-0">{{total_withdraw}} $</h4>
+                                                            </div>
+                                                            <div class="col col-auto text-right">
+                                                                <i class="feather icon-shopping-cart f-50 text-c-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- statustic-card start -->                                        
+                                        </div>                                        
+                                    </div>
+                                </div>
+
+        {% endblock content %}
