@@ -164,21 +164,17 @@ class JobApplicantListView(ListView):
     def post(self, request, *args, **kwargs):
         status = request.POST.get("status")
         if(status == "Not applied"):
-            status = "Approaved"
-        elif(status == "Approaved"):
+            status = "Approved"
+        elif(status == "Approved"):
             status = "Declined"
         elif(status == "Declined"):
-            status = "Approaved"
+            status = "Approved"
 
 
         applicant = Applicants.objects.get(id=request.POST.get("id"))
         applicant.status = status
         applicant.save()
-                
-        print("post ==>",applicant.status)
-
-        
-
+     
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 

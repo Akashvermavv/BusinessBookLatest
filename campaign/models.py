@@ -20,7 +20,7 @@ class Campaign(models.Model):
   
   need_worker_amount = models.IntegerField()
   STATUS_CHOICES = [
-      ('Completed', 'Approaved'),
+      ('Completed', 'Approved'),
       ('Declined', 'Declined'),
       ('Waiting for confirmation', 'Waiting for confirmation'),
       ('Running', 'Running'),
