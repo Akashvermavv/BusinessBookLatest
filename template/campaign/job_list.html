@@ -1,4 +1,3 @@
-
 {% extends 'dashboard/sidebar.html' %}
 
 {% block content %}
@@ -11,201 +10,211 @@
     <title>Job Home</title>
 
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-}
-body{
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-}
-.latest-jobs .jobs .job button, .search button{
-    background-color: rgb(0, 0, 122);
-    padding: 0 20px;
-}
+        body {}
 
-.search{
-    padding: 40px 0;
-}
-.search input{
-    border: 2px solid rgb(0, 0, 122);
-}
+        .latest-jobs .jobs .job button,
+        .search button {
+            background-color: rgb(0, 0, 122);
+            padding: 0 20px;
+        }
 
-.latest-jobs .jobs{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    grid-row-gap: 50px
-}
-.latest-jobs .jobs .job{
-    box-shadow: 1px 1px 10px rgb(148, 148, 148);;
-}
-.latest-jobs .jobs .job .job-img{
-    position: relative;
-}
-.latest-jobs .jobs .job .job-img button{
+        .search {
+            padding: 40px 0;
+        }
 
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 35px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+        .search input {
+            border: 2px solid rgb(0, 0, 122);
+        }
 
-}
+        .latest-jobs .jobs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: center;
+            grid-row-gap: 50px
+        }
+
+        .latest-jobs .jobs .job {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            ;
+        }
+
+        .latest-jobs .jobs .job .job-img {
+            position: relative;
+        }
+
+        .latest-jobs .jobs .job .job-img button {
+
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
 
 
-.job-categories .categories{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    grid-row-gap: 50px
-}
-.job-categories .categories .category{
-    box-shadow: 1px 1px 10px rgb(148, 148, 148);
-    width: 15rem;
-    height: 15rem;
-}
-    .page-link {
-  border: none;
-  color: var(--primary-color);
-  font-size: 18px;
-  font-weight: bold;
-}
+        .job-categories .categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            grid-row-gap: 50px
+        }
 
-.page-link.active-link {
-  color: red !important;
-}
-.job-categories .categories .categorysocial{
-    box-shadow: 1px 1px 10px rgb(148, 148, 148);
-    width: 15rem;
-    height: 15rem;
-}
+        .job-categories .categories .category {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            width: 15rem;
+            height: 15rem;
+        }
 
+        .page-link {
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .page-link.active-link {
+            color: red !important;
+        }
+
+        .job-categories .categories .categorysocial {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            width: 15rem;
+            height: 15rem;
+        }
     </style>
 </head>
 
 
 <body>
-<section class="search bg-light d-flex justify-content-center align-items-center">
-   <div class="container" style="width:50%">
-                <form method="GET">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control rounded col-lg-6 col-md-6"
-                               value="{{ request.GET.q }}"
-                               placeholder="Search Here..." aria-label="Search"
-                               style="border-radius: 15px 0px 0px 15px !important;"
-                               aria-describedby="search-addon"/>
-                        <select name="category" value="{{ request.GET.category }}" aria-placeholder="Topic"
-                                class="form-control col-lg-3 col-md-3">
-                            <option selected="selected" disabled>None</option>
-                            {% for category in all_category %}
-                            <option value="{{ category.title }}">{{ category.title }}</option>
-                            {% endfor %}
-                        </select>
-                        <button type="submit" value="submit"
-                                class="btn btn-outline-primary text-white col-lg-3 col-md-3"
-                                style="background-color: black; border-radius: 0px 15px 15px 0px;">search
-                        </button>
-                    </div>
-
-
-                </form>
-            </div>
-</section>
-
-<section class="latest-jobs mt-5">
-    <h2 class="text-center">Latest jobs for you</h2>
-    <p class="text-center">Complete the job and wait for confirmation</p>
-    <div class="jobs container mt-5">
-        {% for each_campaign in campaign %}
-        <div class="job card" style="width: 18rem; height: 25rem;">
-            <div class="bg-light card-img-top job-img" style="height: 16rem; width: 100%;">
-              <center><img src="{{each_campaign.cam_image.url}}" style="height:140px;width:80%;margin-top:100px;" alt="not available"></center>
-                <button href="#" class="card-link btn btn-success btn-sm social-button">{{ each_campaign.category.title}}</button>
-            </div>
-            <div class="card-body">
-                <h6 class="card-title">{{ each_campaign.title }}</h6>
-            </div>
-            <ul class="ml-5">
-                <li class="">No of position: {{each_campaign.need_worker_amount}}</li>
-                <li class="">Available position: 10</li>
-                <li class="">Success Rate: 0%</li>
-            </ul>
-            <div class="card-body bg-light d-flex justify-content-between">
-                <h5>${{each_campaign.earn}}</h5>
-                <a href="{% url 'apply_campaign' each_campaign.id %}"><button  class="card-link btn btn-success btn-sm">apply</button></a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-{% if campaign.has_other_pages %}
-<section class="pagination">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 d-flex align-items-center justify-content-center">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        {% if campaign.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page=
-                    {{ campaign.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-                               aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        {% else %}
-                        <li class="disabled"><a class="page-link" href="#!" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span></a></li>
-
-                        {% endif %}
-                        {% for num in campaign.paginator.page_range %}
-                        {% if campaign.number == num %}
-                        <li class="page-item"><a class="page-link" href="#!">{{num}}</a></li>
-                        {% else %}
-                        <li class="page-item"><a class="page-link"
-                                                 href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{num}}</a>
-                        </li>
-                        {% endif %}
+    <section class="search bg-light d-flex justify-content-center align-items-center">
+        <div class="container" style="width:50%">
+            <form method="GET">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control rounded col-lg-6 col-md-6"
+                        value="{{ request.GET.q }}" placeholder="Search Here..." aria-label="Search"
+                        style="border-radius: 15px 0px 0px 15px !important;" aria-describedby="search-addon" />
+                    <select name="category" value="{{ request.GET.category }}" aria-placeholder="Topic"
+                        class="form-control col-lg-3 col-md-3">
+                        <option selected="selected" disabled>None</option>
+                        {% for category in all_category %}
+                        <option value="{{ category.title }}">{{ category.title }}</option>
                         {% endfor %}
+                    </select>
+                    <button type="submit" value="submit" class="btn btn-outline-primary text-white col-lg-3 col-md-3"
+                        style="background-color: black; border-radius: 0px 15px 15px 0px;">search
+                    </button>
+                </div>
 
-                        {% if campaign.has_next %}
 
-                        <li class="page-item">
-                            <a class="page-link"
-                               href="?page={{ campaign.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-                               aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                        {% else %}
+            </form>
+        </div>
+    </section>
 
-                        <li class="disabled"><a class="page-link" href="#!" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span></a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
+    <section class="latest-jobs mt-5">
+        <h2 class="text-center">Latest jobs for you</h2>
+        <p class="text-center">Complete the job and wait for confirmation</p>
+        <div class="jobs container mt-5">
+            {% for each_campaign in campaign %}
+            <div class="job card" style="width: 18rem; height: 25rem;">
+                <div class="bg-light card-img-top job-img" style="height: 16rem; width: 100%;">
+                    <center><img src="{{each_campaign.cam_image.url}}" style="height:140px;width:80%;margin-top:100px;"
+                            alt="not available"></center>
+                    <button href="#" class="card-link btn btn-success btn-sm social-button">
+                        {{each_campaign.category.title}}</button>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ each_campaign.title }}</h6>
+                </div>
+                <ul class="ml-5">
+                    <li class="">No of position: {{each_campaign.need_worker_amount}}</li>
+                    <li class="">Available position: 10</li>
+                    <li class="">Success Rate: 0%</li>
+                </ul>
+                <div class="card-body bg-light d-flex justify-content-between">
+                    <h5>${{each_campaign.earn}}</h5>
+                    <a href="{% url 'apply_campaign' each_campaign.id %}"><button
+                            class="card-link btn btn-success btn-sm">apply</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% if campaign.has_other_pages %}
+    <section class="pagination">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 d-flex align-items-center justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if campaign.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=
+                    {{ campaign.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% else %}
+                            <li class="disabled"><a class="page-link" href="#!" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span></a></li>
+
+                            {% endif %}
+                            {% for num in campaign.paginator.page_range %}
+                            {% if campaign.number == num %}
+                            <li class="page-item"><a class="page-link" href="#!">{{num}}</a></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link"
+                                    href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{num}}</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% if campaign.has_next %}
+
+                            <li class="page-item">
+                                <a class="page-link"
+                                    href="?page={{ campaign.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {% else %}
+
+                            <li class="disabled"><a class="page-link" href="#!" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span></a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-{% endif %}
+    </section>
+    {% endif %}
 
-<section class="job-categories mt-5">
-    <h2 class="text-center">Job Categories</h2>
-    <p class="text-center">Find te job in your expertise category</p>
-    <div class="categories container mt-5">
-        {% for each in all_category %}
-        <div class="category d-flex align-items-center justify-content-center" >
+    <section class="job-categories mt-5">
+        <h2 class="text-center">Job Categories</h2>
+        <p class="text-center">Find te job in your expertise category</p>
+        <div class="categories container mt-5">
+            {% for each in all_category %}
+            <div class="category d-flex align-items-center justify-content-center">
 
                 <h3>{{each.title}}</h3> </br>
+                <p>{{each.total}}</p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-     
-</section>
+
+    </section>
 </body>
 
 
 {% endblock content %}
+
 </html>

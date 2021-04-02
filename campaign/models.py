@@ -10,7 +10,7 @@ class CampaignCategory(models.Model):
 
 class Campaign(models.Model):
   user = models.ForeignKey(User,null=True,blank=True,on_delete = models.CASCADE)
-  category = models.ForeignKey(CampaignCategory, on_delete = models.CASCADE)
+  category = models.ForeignKey(CampaignCategory, related_name='category_title', on_delete = models.CASCADE)
   topic = models.IntegerField(null=True,blank=True)
   title = models.CharField(max_length=30)
   description = models.TextField()

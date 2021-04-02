@@ -1,6 +1,6 @@
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -120,9 +120,9 @@ def get_job_list(request):
         except PageNotAnInteger:
             campaign = paginator.page(1)
         except EmptyPage:
-            campaign = paginator.page(paginator.num_pages)
+            campaign = paginator.page(paginator.num_pages)        
 
-        context = {"campaign": campaign,'all_category':CampaignCategory.objects.all()}
+        context = {"campaign": campaign,'all_category':CampaignCategory.objects.all().values("title").annotate(total=Count("category_title")).order_by("-total")}
         return render(request, template_name, context)
     except Exception as ex:
         print(ex)
