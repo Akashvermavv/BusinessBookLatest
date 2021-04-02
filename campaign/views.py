@@ -177,4 +177,12 @@ class JobApplicantListView(ListView):
      
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+class CategoryWiseJobListView(ListView):
+    model = Campaign      # shorthand for setting queryset = models.Car.objects.all()
+    paginate_by = 10  #and that's it !!
 
+    def get(self, request, *args, **kwargs):
+        print("sadsadsadadas",kwargs.get('pk'))
+        category_wise_job_list = Campaign.objects.filter(category__id=kwargs.get('pk'))
+        context = {"category_wise_job_list": category_wise_job_list}
+        return render(request, 'campaign/category_wise_job_list.html', context)

@@ -127,7 +127,8 @@
                     <center><img src="{{each_campaign.cam_image.url}}" style="height:140px;width:80%;margin-top:100px;"
                             alt="not available"></center>
                     <button href="#" class="card-link btn btn-success btn-sm social-button">
-                        {{each_campaign.category.title}}</button>
+                        <a class="text-white" href="/campaign/category-wise-joblist/{{each_campaign.category.id}}" >{{each_campaign.category.title}}</a>
+                    </button>
                 </div>
                 <div class="card-body">
                     <h6 class="card-title">{{ each_campaign.title }}</h6>

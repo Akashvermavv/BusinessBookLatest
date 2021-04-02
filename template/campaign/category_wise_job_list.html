@@ -1,0 +1,133 @@
+{% extends 'dashboard/sidebar.html' %}
+
+{% block content %}
+{% csrf_token %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {}
+
+        .latest-jobs .jobs .job button,
+        .search button {
+            background-color: rgb(0, 0, 122);
+            padding: 0 20px;
+        }
+
+        .search {
+            padding: 40px 0;
+        }
+
+        .search input {
+            border: 2px solid rgb(0, 0, 122);
+        }
+
+        .latest-jobs .jobs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: center;
+            grid-row-gap: 50px
+        }
+
+        .latest-jobs .jobs .job {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            ;
+        }
+
+        .latest-jobs .jobs .job .job-img {
+            position: relative;
+        }
+
+        .latest-jobs .jobs .job .job-img button {
+
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+        }
+
+
+        .job-categories .categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-items: center;
+            grid-row-gap: 50px
+        }
+
+        .job-categories .categories .category {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            width: 15rem;
+            height: 15rem;
+        }
+
+        .page-link {
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .page-link.active-link {
+            color: red !important;
+        }
+
+        .job-categories .categories .categorysocial {
+            box-shadow: 1px 1px 10px rgb(148, 148, 148);
+            width: 15rem;
+            height: 15rem;
+        }
+    </style>
+</head>
+
+
+<body>
+   
+    <section class="latest-jobs mt-5">
+        <h2 class="text-center">Job By Category</h2>
+        <p class="text-center">Complete the job and wait for confirmation</p>
+        <div class="jobs container mt-5">
+            {% for each_campaign in category_wise_job_list %}
+            <div class="job card" style="width: 18rem; height: 25rem;">
+                <div class="bg-light card-img-top job-img" style="height: 16rem; width: 100%;">
+                    <center><img src="{{each_campaign.cam_image.url}}" style="height:140px;width:80%;margin-top:100px;"
+                            alt="not available"></center>
+                    <button href="#" class="card-link btn btn-success btn-sm social-button">
+                        <a class="text-white" href="dsfsdf{{each_campaign.category.id}}" >{{each_campaign.category.title}}</a>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ each_campaign.title }}</h6>
+                </div>
+                <ul class="ml-5">
+                    <li class="">No of position: {{each_campaign.need_worker_amount}}</li>
+                    <li class="">Available position: 10</li>
+                    <li class="">Success Rate: 0%</li>
+                </ul>
+                <div class="card-body bg-light d-flex justify-content-between">
+                    <h5>${{each_campaign.earn}}</h5>
+                    <a href="{% url 'apply_campaign' each_campaign.id %}"><button
+                            class="card-link btn btn-success btn-sm">apply</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+   
+</body>
+
+
+{% endblock content %}
+
+</html>
