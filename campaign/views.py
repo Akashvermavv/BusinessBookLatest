@@ -1,6 +1,6 @@
 from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -120,9 +120,9 @@ def get_job_list(request):
         except PageNotAnInteger:
             campaign = paginator.page(1)
         except EmptyPage:
-            campaign = paginator.page(paginator.num_pages)
+            campaign = paginator.page(paginator.num_pages)        
 
-        context = {"campaign": campaign,'all_category':CampaignCategory.objects.all()}
+        context = {"campaign": campaign,'all_category':CampaignCategory.objects.all().values("title").annotate(total=Count("category_title")).order_by("-total")}
         return render(request, template_name, context)
     except Exception as ex:
         print(ex)
@@ -164,21 +164,25 @@ class JobApplicantListView(ListView):
     def post(self, request, *args, **kwargs):
         status = request.POST.get("status")
         if(status == "Not applied"):
-            status = "Approaved"
-        elif(status == "Approaved"):
+            status = "Approved"
+        elif(status == "Approved"):
             status = "Declined"
         elif(status == "Declined"):
-            status = "Approaved"
+            status = "Approved"
 
 
         applicant = Applicants.objects.get(id=request.POST.get("id"))
         applicant.status = status
         applicant.save()
-                
-        print("post ==>",applicant.status)
-
-        
-
+     
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+class CategoryWiseJobListView(ListView):
+    model = Campaign      # shorthand for setting queryset = models.Car.objects.all()
+    paginate_by = 10  #and that's it !!
 
+    def get(self, request, *args, **kwargs):
+        print("sadsadsadadas",kwargs.get('pk'))
+        category_wise_job_list = Campaign.objects.filter(category__id=kwargs.get('pk'))
+        context = {"category_wise_job_list": category_wise_job_list}
+        return render(request, 'campaign/category_wise_job_list.html', context)

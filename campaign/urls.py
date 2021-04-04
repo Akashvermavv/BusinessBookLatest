@@ -12,6 +12,6 @@ urlpatterns = [
 	path('get_your_campaign_list/',views.YourCampaignListView.as_view(), name='get_your_campaign_list'),
 	path('apply_campaign/<int:pk>/',views.ApplyCampaign.as_view(), name='apply_campaign'),
 	path('job-applicant-list/<int:pk>/',views.JobApplicantListView.as_view(), name='job-applicant-list'),
-
+	path('category-wise-joblist/<int:pk>/',views.CategoryWiseJobListView.as_view(), name='category-wise-joblist'),
 	]
     
