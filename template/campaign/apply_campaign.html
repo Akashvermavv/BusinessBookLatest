@@ -1,5 +1,5 @@
 {% extends 'dashboard/sidebar.html' %}
-
+{% load campaign_tags %}
 {% block content %}
 <style>
 .campproof .box {
@@ -90,6 +90,18 @@
           <div class="campdes">
               <h3>Proof Instructions</h3>
                   <p class="box">{{campaign.required_proof}} </p>
+          </div>
+          <div class="campdes">
+              <h3>Earn</h3>
+                  <p class="box">{{campaign.earn}} </p>
+          </div>
+          <div class="campdes">
+              <h3>Available Position</h3>
+                  <p class="box">{% subtractify campaign %} </p>
+          </div>
+          <div class="campdes">
+              <h3>Available Position</h3>
+                  <p class="box">{{campaign.need_worker_amount}} </p>
           </div>
           <div><p class="prooftext">
               Upload

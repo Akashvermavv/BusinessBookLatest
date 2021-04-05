@@ -1,5 +1,5 @@
 {% extends 'dashboard/sidebar.html' %}
-
+{% load campaign_tags %}
 {% block content %}
 {% csrf_token %}
 
@@ -131,12 +131,15 @@
                     </button>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">{{ each_campaign.title }}</h6>
+                    <a href="{% url 'apply_campaign' each_campaign.id %}">
+                            <h6 class="card-title">{{ each_campaign.title }}</h6></a>
+
+
                 </div>
                 <ul class="ml-5">
                     <li class="">No of position: {{each_campaign.need_worker_amount}}</li>
-                    <li class="">Available position: 10</li>
-                    <li class="">Success Rate: 0%</li>
+                    <li class="">Available position: {% subtractify each_campaign %}</li>
+                    <li class="">Success Rate: {% success_rate each_campaign %} %</li>
                 </ul>
                 <div class="card-body bg-light d-flex justify-content-between">
                     <h5>${{each_campaign.earn}}</h5>
